@@ -101,7 +101,7 @@ public class ConfigScreen extends Screen {
 
     @Override
     public boolean isPauseScreen() {
-        return false;
+        return this.previousScreen != null;
     }
 
     @Override
