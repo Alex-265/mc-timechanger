@@ -19,13 +19,15 @@ public class ConfigScreen extends Screen {
     private int sizeY = 156;
     private int posTop;
     private int posLeft;
+    private Screen previousScreen;
 
     public ConfigScreen(Component title) {
         super(title);
     }
 
-    public ConfigScreen() {
+    public ConfigScreen(Screen previousScreen) {
         super(Component.empty());
+        this.previousScreen = previousScreen;
     }
 
     @Override
@@ -105,6 +107,6 @@ public class ConfigScreen extends Screen {
     @Override
     public void onClose() {
         CommonClass.CONFIG.save();
-        super.onClose();
+        this.minecraft.setScreen(this.previousScreen);
     }
 }

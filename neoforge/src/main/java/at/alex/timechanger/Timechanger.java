@@ -3,6 +3,7 @@ package at.alex.timechanger;
 import at.alex.timechanger.config.gui.ConfigScreen;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -22,7 +23,7 @@ public class Timechanger {
     public Timechanger(IEventBus eventBus) {
         CommonClass.init();
 
-        ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (modContainer, screen) -> new ConfigScreen());
+        ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (modContainer, screen) -> new ConfigScreen(screen));
         ModLoadingContext.get().getActiveContainer().getEventBus().register(KeyMappingListener.class);
         NeoForge.EVENT_BUS.register(Timechanger.class);
     }
@@ -30,7 +31,7 @@ public class Timechanger {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         while (OPEN_SETTINGS_KEYBIND.get().consumeClick()) {
-            Minecraft.getInstance().setScreen(new ConfigScreen());
+            Minecraft.getInstance().setScreen(new ConfigScreen(Component.empty()));
         }
     }
 }
