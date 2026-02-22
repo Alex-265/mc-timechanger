@@ -11,10 +11,12 @@ import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+
+import java.util.Arrays;
 
 public class ConfigScreen extends Screen {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/background.png");
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/background.png");
     private int sizeX = 248;
     private int sizeY = 156;
     private int posTop;
@@ -74,10 +76,9 @@ public class ConfigScreen extends Screen {
         );
         y += 20 + 2;
         this.addRenderableWidget(
-                CycleButton.builder(component -> Component.literal((component.toString())))
-                        .withInitialValue(CommonClass.CONFIG.weather)
+                CycleButton.builder(component -> Component.literal(component), CommonClass.CONFIG.weather.toString())
                         .displayOnlyValue()
-                        .withValues((Object[]) WeatherState.values())
+                        .withValues(Arrays.stream(WeatherState.values()).map(String::valueOf).toArray(String[]::new))
                         .create(posLeft + 40, y, sizeX - 60, 20, Component.empty(), ((cycleButton, o) -> CommonClass.CONFIG.weather = WeatherState.valueOf(o.toString())))
         );
     }

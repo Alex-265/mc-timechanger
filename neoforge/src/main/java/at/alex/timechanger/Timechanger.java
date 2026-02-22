@@ -4,7 +4,7 @@ import at.alex.timechanger.config.gui.ConfigScreen;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -18,7 +18,7 @@ import org.lwjgl.glfw.GLFW;
 
 @Mod(value = Constants.MOD_ID, dist = Dist.CLIENT)
 public class Timechanger {
-    static final Lazy<KeyMapping> OPEN_SETTINGS_KEYBIND = Lazy.of(() -> new KeyMapping("key.timechanger.openconfig", GLFW.GLFW_KEY_N, new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "name"))));
+    static final Lazy<KeyMapping> OPEN_SETTINGS_KEYBIND = Lazy.of(() -> new KeyMapping("key.timechanger.openconfig", GLFW.GLFW_KEY_N, new KeyMapping.Category(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "name"))));
 
 
     public Timechanger(IEventBus eventBus) {
