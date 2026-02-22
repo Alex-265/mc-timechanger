@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.glfw.GLFW;
 
 public class TimeChangerClient implements ClientModInitializer {
@@ -19,7 +20,7 @@ public class TimeChangerClient implements ClientModInitializer {
                 "key.timechanger.openconfig",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_N,
-                "key.categories.timechanger"
+                new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID,"name"))
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
