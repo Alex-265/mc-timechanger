@@ -6,7 +6,7 @@ import at.alex.timechanger.config.data.WeatherState;
 import at.alex.timechanger.utils.TimeNameUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -88,15 +88,15 @@ public class ConfigScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+    public void extractRenderState(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float delta) {
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, posLeft, posTop, 0, 0, sizeX, sizeY, 248, 256);
-        super.render(guiGraphics, mouseX, mouseY, delta);
+        super.extractRenderState(guiGraphics, mouseX, mouseY, delta);
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void extractPanorama(GuiGraphicsExtractor guiGraphics, float partialTick) {
         if (Minecraft.getInstance().level == null) {
-            renderPanorama(guiGraphics, partialTick);
+            super.extractPanorama(guiGraphics, partialTick);
         }
     }
 

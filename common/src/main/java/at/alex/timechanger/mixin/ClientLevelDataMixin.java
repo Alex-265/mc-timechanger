@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientLevel.ClientLevelData.class)
 public class ClientLevelDataMixin {
-    @Inject(method = "getDayTime", at=@At(value = "HEAD"), cancellable = true)
-    public void getTimeOfDay(CallbackInfoReturnable<Long> cir) {
+    @Inject(method = "getGameTime", at=@At(value = "HEAD"), cancellable = true)
+    public void getGameTime(CallbackInfoReturnable<Long> cir) {
         if(CommonClass.CONFIG.timeEnabled) {
             cir.setReturnValue((long) CommonClass.CONFIG.time);
         }
