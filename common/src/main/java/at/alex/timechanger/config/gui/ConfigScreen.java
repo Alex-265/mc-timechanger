@@ -6,6 +6,7 @@ import at.alex.timechanger.config.data.WeatherState;
 import at.alex.timechanger.utils.TimeNameUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 
 public class ConfigScreen extends Screen {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/background.png");
+    public static final int FONT_COLOR = Color.fromHex("#4c4c4c").getColor();
     private int sizeX = 248;
     private int sizeY = 156;
     private int posTop;
@@ -50,23 +52,25 @@ public class ConfigScreen extends Screen {
                 }
         );
 
-        addTitle(y, Component.literal("Set Time & Weather"));
+        addTitle(y, Component.literal("Set Time & Weather").withoutShadow().withColor(FONT_COLOR));
         y += 8 + 10;
+
         this.addRenderableWidget(
-                Checkbox.builder(Component.literal("Set Time"), font)
-                        .pos(posLeft + 20, y)
+                Checkbox.builder(Component.literal("Set Time").withoutShadow().withColor(FONT_COLOR), font)
                         .selected(CommonClass.CONFIG.timeEnabled)
                         .onValueChange(((checkbox, b) -> {
                                     CommonClass.CONFIG.timeEnabled = b;
                                 })
-                        ).build()
+                        )
+                        .pos(posLeft + 20, y)
+                        .build()
         );
         y += 20 + 2;
         AbstractWidget timeSliderWidget = timeSlider.createButton(null, posLeft + 40, y, sizeX - 60);
         this.addRenderableWidget(timeSliderWidget);
         y += 20 + 10;
         this.addRenderableWidget(
-                Checkbox.builder(Component.literal("Set Weather"), font)
+                Checkbox.builder(Component.literal("Set Weather").withoutShadow().withColor(FONT_COLOR), font)
                         .pos(posLeft + 20, y)
                         .selected(CommonClass.CONFIG.weatherEnabled)
                         .onValueChange(((checkbox, b) -> {
@@ -84,7 +88,13 @@ public class ConfigScreen extends Screen {
     }
 
     private void addTitle(int y, Component title) {
-        this.addRenderableWidget(new StringWidget(posLeft + (sizeX - font.width(title.getVisualOrderText())) / 2, y, font.width(title.getVisualOrderText()), 8, title, font));
+        this.addRenderableWidget(new StringWidget(
+                posLeft + (sizeX - font.width(title.getVisualOrderText())) / 2,
+                y,
+                font.width(title.getVisualOrderText()),
+                8,
+                title,
+                font));
     }
 
     @Override
@@ -92,6 +102,7 @@ public class ConfigScreen extends Screen {
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, posLeft, posTop, 0, 0, sizeX, sizeY, 248, 256);
         super.extractRenderState(guiGraphics, mouseX, mouseY, delta);
     }
+
 
     @Override
     public void extractPanorama(GuiGraphicsExtractor guiGraphics, float partialTick) {
