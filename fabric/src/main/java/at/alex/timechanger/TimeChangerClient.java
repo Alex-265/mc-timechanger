@@ -25,7 +25,7 @@ public class TimeChangerClient implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (keyBinding.consumeClick()) {
-                Minecraft.getInstance().setScreen(new ConfigScreen(Component.empty()));
+                Minecraft.getInstance().setScreenAndShow(new ConfigScreen(Component.empty()));
             }
         });
     }

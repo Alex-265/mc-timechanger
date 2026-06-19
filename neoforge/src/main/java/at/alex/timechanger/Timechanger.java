@@ -32,7 +32,7 @@ public class Timechanger {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         while (OPEN_SETTINGS_KEYBIND.get().consumeClick()) {
-            Minecraft.getInstance().setScreen(new ConfigScreen(Component.empty()));
+            Minecraft.getInstance().setScreenAndShow(new ConfigScreen(Component.empty()));
         }
     }
 }

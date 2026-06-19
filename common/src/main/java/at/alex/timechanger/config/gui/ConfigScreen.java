@@ -119,6 +119,6 @@ public class ConfigScreen extends Screen {
     @Override
     public void onClose() {
         CommonClass.CONFIG.save();
-        this.minecraft.setScreen(this.previousScreen);
+        this.minecraft.setScreenAndShow(this.previousScreen);
     }
 }
