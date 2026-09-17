@@ -9,7 +9,6 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
 
 public class TimeChangerClient implements ClientModInitializer {
     private static KeyMapping keyBinding;
@@ -18,8 +17,8 @@ public class TimeChangerClient implements ClientModInitializer {
     public void onInitializeClient() {
         keyBinding = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.timechanger.openconfig",
-                InputConstants.Type.KEYSYM,
-                GLFW.GLFW_KEY_N,
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_N,
                 new KeyMapping.Category(Identifier.fromNamespaceAndPath(Constants.MOD_ID,"name"))
         ));
 

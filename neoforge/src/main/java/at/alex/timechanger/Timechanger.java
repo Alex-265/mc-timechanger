@@ -1,6 +1,7 @@
 package at.alex.timechanger;
 
 import at.alex.timechanger.config.gui.ConfigScreen;
+import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -14,11 +15,10 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.Lazy;
-import org.lwjgl.glfw.GLFW;
 
 @Mod(value = Constants.MOD_ID, dist = Dist.CLIENT)
 public class Timechanger {
-    static final Lazy<KeyMapping> OPEN_SETTINGS_KEYBIND = Lazy.of(() -> new KeyMapping("key.timechanger.openconfig", GLFW.GLFW_KEY_N, new KeyMapping.Category(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "name"))));
+    static final Lazy<KeyMapping> OPEN_SETTINGS_KEYBIND = Lazy.of(() -> new KeyMapping("key.timechanger.openconfig", InputConstants.KEY_N, new KeyMapping.Category(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "name"))));
 
 
     public Timechanger(IEventBus eventBus) {

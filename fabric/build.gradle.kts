@@ -2,7 +2,6 @@ import com.blamejared.Properties
 import com.blamejared.Versions
 import com.blamejared.gradle.mod.utils.GMUtils
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
-import org.gradle.internal.impldep.com.fasterxml.jackson.databind.annotation.JsonAppend
 import net.darkhax.curseforgegradle.Constants as CFG_Constants
 
 plugins {
@@ -13,6 +12,7 @@ plugins {
 
 repositories {
     maven { name = "Terraformers"; url = uri("https://maven.terraformersmc.com/")}
+    maven { name = "CaffeineMC"; url = uri("https://maven.caffeinemc.net/releases") }
 }
 
 dependencies {
@@ -20,6 +20,7 @@ dependencies {
     implementation("net.fabricmc:fabric-loader:${Versions.FABRIC_LOADER}")
     implementation("net.fabricmc.fabric-api:fabric-api:${Versions.FABRIC}")
     implementation("com.terraformersmc:modmenu:${Versions.MODMENU}")
+    //implementation("net.caffeinemc:sodium-fabric:${Versions.SODIUM}")
 }
 
 loom {

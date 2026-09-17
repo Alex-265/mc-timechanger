@@ -2,7 +2,7 @@ import com.blamejared.Versions
 
 plugins {
     id("blamejared-java-conventions")
-    id("net.neoforged.moddev") version ("2.0.141")
+    id("net.neoforged.moddev") version ("2.0.147")
 }
 
 neoForge {

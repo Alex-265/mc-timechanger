@@ -6,7 +6,6 @@ import at.alex.timechanger.config.data.WeatherState;
 import at.alex.timechanger.utils.TimeNameUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.*;
 import net.minecraft.client.gui.screens.Screen;
