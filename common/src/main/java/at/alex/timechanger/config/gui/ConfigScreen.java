@@ -46,9 +46,7 @@ public class ConfigScreen extends Screen {
                 ((component, integer) -> Component.literal(TimeNameUtil.getNameOfTime(integer) + " (" + integer + ")")),
                 new OptionInstance.IntRange(0, 24000),
                 CommonClass.CONFIG.time,
-                (integer) -> {
-                    CommonClass.CONFIG.time = integer;
-                }
+                (integer) -> CommonClass.CONFIG.time = integer
         );
 
         addTitle(y, Component.literal("Set Time & Weather").withoutShadow().withColor(FONT_COLOR));

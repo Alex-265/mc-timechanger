@@ -1,5 +1,6 @@
 package at.alex.timechanger;
 
+import at.alex.timechanger.command.Command;
 import at.alex.timechanger.config.gui.ConfigScreen;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
@@ -12,6 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.util.Lazy;
@@ -33,6 +35,13 @@ public class Timechanger {
     public static void onClientTick(ClientTickEvent.Post event) {
         while (OPEN_SETTINGS_KEYBIND.get().consumeClick()) {
             Minecraft.getInstance().setScreenAndShow(new ConfigScreen(Component.empty()));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onClientCommandRegister(RegisterClientCommandsEvent event) {
+        for(Command c : CommonClass.COMMAND_MANAGER.getCommands()) {
+            c.register(event.getDispatcher());
         }
     }
 }
