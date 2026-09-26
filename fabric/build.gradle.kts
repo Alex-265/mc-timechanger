@@ -46,6 +46,7 @@ tasks.register<TaskPublishCurseForge>("publishCurseForge") {
     mainFile.changelog = ""
     mainFile.releaseType = CFG_Constants.RELEASE_TYPE_RELEASE
     mainFile.addJavaVersion("Java ${Versions.JAVA}")
+    mainFile.addGameVersion("Client")
     mainFile.addGameVersion(Versions.MINECRAFT)
     mainFile.addOptional("modmenu")
 
