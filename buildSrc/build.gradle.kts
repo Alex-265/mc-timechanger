@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     gradleApi()
-    implementation(group = "com.blamejared", name = "gradle-mod-utils", version = "1.0.3")
-    implementation(group = "net.darkhax.curseforgegradle", name = "CurseForgeGradle", version = "1.0.10")
-    implementation(group = "com.modrinth.minotaur", name = "Minotaur", version = "2.+")
+    implementation("com.blamejared:gradle-mod-utils:1.0.5")
+    implementation("net.darkhax.curseforgegradle:CurseForgeGradle:1.1.15")
+    implementation("com.modrinth.minotaur:Minotaur:2.+")
 }

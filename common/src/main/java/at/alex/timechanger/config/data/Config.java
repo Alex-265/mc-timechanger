@@ -18,10 +18,6 @@ public class Config {
     private Path path = Services.PLATFORM.getConfigFilePath();
     private URL defaultConfigPath = this.getClass().getResource("/defaultConfig.properties");
 
-    static {
-        System.out.println("LOAD CONFIG TFIFIF");
-    }
-
     public Config() {
         this.load();
     }

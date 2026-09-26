@@ -1,4 +1,9 @@
 {
   "key.timechanger.openconfig": "Open time config",
-  "key.category.timechanger.name": "Time & Weather Changer"
+  "key.category.timechanger.name": "Time & Weather Changer",
+  "commands.timeweatherchanger.set.clear": "Set the weather to normal",
+  "commands.timeweatherchanger.time.query": "The time is %s",
+  "commands.timeweatherchanger.time.query.off": "Time changer is not active",
+  "commands.timeweatherchanger.time.set": "Set the time to %s",
+  "commands.timeweatherchanger.time.off": "Set the time to normal"
 }

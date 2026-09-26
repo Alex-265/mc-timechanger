@@ -39,9 +39,10 @@ tasks.create<TaskPublishCurseForge>("publishCurseForge") {
 
     val mainFile = upload(Properties.CURSE_PROJECT_ID, tasks.jar.get().archiveFile)
     mainFile.changelogType = "markdown"
-    mainFile.changelog = GMUtils.smallChangelog(project, Properties.GIT_REPO)
+    mainFile.changelog = ""
     mainFile.releaseType = Constants.RELEASE_TYPE_RELEASE
     mainFile.addJavaVersion("Java ${Versions.JAVA}")
+    mainFile.addGameVersion("Client")
     mainFile.addGameVersion(Versions.MINECRAFT)
     mainFile.addModLoader("NeoForge")
 
@@ -53,7 +54,6 @@ tasks.create<TaskPublishCurseForge>("publishCurseForge") {
 modrinth {
     token.set(GMUtils.locateProperty(project, "modrinth_token"))
     projectId.set(Properties.MODRINTH_PROJECT_ID)
-    changelog.set(GMUtils.smallChangelog(project, Properties.GIT_REPO))
     versionName.set("${Properties.NAME}-${Versions.MINECRAFT}-$version (NeoForge)")
     versionType.set("release")
     gameVersions.set(listOf(Versions.MINECRAFT))

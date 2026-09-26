@@ -37,15 +37,16 @@ loom {
     }
 }
 
-tasks.create<TaskPublishCurseForge>("publishCurseForge") {
-    dependsOn(tasks.remapJar)
+tasks.register<TaskPublishCurseForge>("publishCurseForge") {
+    dependsOn(tasks.jar)
     apiToken = GMUtils.locateProperty(project, "curseforgeApiToken")
 
-    val mainFile = upload(Properties.CURSE_PROJECT_ID, tasks.remapJar.get().archiveFile)
+    val mainFile = upload(Properties.CURSE_PROJECT_ID, tasks.jar.get().archiveFile)
     mainFile.changelogType = "markdown"
-    mainFile.changelog = GMUtils.smallChangelog(project, Properties.GIT_REPO)
+    mainFile.changelog = ""
     mainFile.releaseType = CFG_Constants.RELEASE_TYPE_RELEASE
     mainFile.addJavaVersion("Java ${Versions.JAVA}")
+    mainFile.addGameVersion("Client")
     mainFile.addGameVersion(Versions.MINECRAFT)
     mainFile.addOptional("modmenu")
 
@@ -57,15 +58,14 @@ tasks.create<TaskPublishCurseForge>("publishCurseForge") {
 modrinth {
     token.set(GMUtils.locateProperty(project, "modrinth_token"))
     projectId.set(Properties.MODRINTH_PROJECT_ID)
-    changelog.set(GMUtils.smallChangelog(project, Properties.GIT_REPO))
     versionName.set("${Properties.NAME}-${Versions.MINECRAFT}-$version (Fabric)")
     versionType.set("release")
-    uploadFile.set(tasks.remapJar.get())
+    uploadFile.set(tasks.jar.get())
     dependencies {
         optional.project("mOgUt4GM") // Modmenu
     }
 }
-tasks.modrinth.get().dependsOn(tasks.remapJar)
+tasks.modrinth.get().dependsOn(tasks.jar)
 
 tasks.named("publishCurseForge") {
     group = "publishing"

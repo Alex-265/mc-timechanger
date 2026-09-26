@@ -1,7 +1,7 @@
 package com.blamejared
 
 object Versions {
-    const val MOD = "1.0.0"
+    const val MOD = "1.3.0"
     const val JAVA = "21"
     const val MINECRAFT = "1.21.11"
     const val FABRIC_LOADER = "0.18.4" // https://fabricmc.net/develop/

@@ -1,8 +1,10 @@
 package at.alex.timechanger;
 
+import at.alex.timechanger.command.Command;
 import at.alex.timechanger.config.gui.ConfigScreen;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
@@ -28,5 +30,11 @@ public class TimeChangerClient implements ClientModInitializer {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Component.empty()));
             }
         });
+
+        ClientCommandRegistrationCallback.EVENT.register((((dispatcher, buildContext) -> {
+            for(Command c : CommonClass.COMMAND_MANAGER.getCommands()) {
+                c.register(dispatcher);
+            }
+        })));
     }
 }
