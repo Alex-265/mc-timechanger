@@ -10,3 +10,27 @@ A Minecraft NeoForge & Fabric mod, that allows you to change client-side time an
 - Weather and Time configurable through a GUI, which can be opened by pressing N (default keybinding)
 - Works client-side
 - Supports both NeoForge and Fabric
+
+### Local builds and publishing
+
+Build every supported Minecraft/Fabric/NeoForge target locally:
+
+```bash
+.\gradlew.bat buildAll
+```
+The resulting jars are stored in `build/libs/<version>/`.
+
+Publishing:
+
+Powershell:
+```powershell
+$env:MODRINTH_TOKEN = "your-modrinth-token"
+$env:CURSEFORGE_TOKEN = "your-curseforge-token"
+.\gradlew.bat publishAll
+```
+sh:
+```sh
+export MODRINTH_TOKEN="your-modrinth-token"
+export CURSEFORGE_TOKEN="your-curseforge-token"
+.\gradlew.bat publishAll
+```

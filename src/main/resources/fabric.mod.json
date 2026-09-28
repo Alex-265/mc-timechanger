@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "name": "${name}",
+  "version": "${version}",
+  "description": "${description}",
+  "environment": "client",
+  "icon": "assets/${id}/icon.png",
+  "authors": ["${author}"],
+  "license": "${license}",
+  "contact": {
+    "homepage": "${homepage}",
+    "sources": "${sources}",
+    "issues": "${issues}"
+  },
+  "entrypoints": {
+    "main": [
+      "at.alex.timechanger.Timechanger"
+    ],
+    "client": [
+      "at.alex.timechanger.TimeChangerClient"
+    ],
+    "modmenu": [
+      "at.alex.timechanger.ModMenuImpl"
+    ]
+  },
+  "mixins": ["${id}.mixins.json"],
+  "depends": {
+    "fabricloader": ">=${fabric_loader}",
+    "fabric-api": "*",
+    "java": ">=${java}",
+    "minecraft": "${minecraft}"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}

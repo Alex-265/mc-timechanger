@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "at.alex.timechanger.mixin",
+  "compatibilityLevel": "${java}",
+  "mixins": [
+  ],
+  "client": [
+    "ClientClockManagerMixin",
+    "LevelMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
