@@ -6,7 +6,7 @@ import at.alex.timechanger.command.impl.WeatherClientCommand;
 import java.util.*;
 
 public class CommandManager {
-    private Set<Command> commands = new HashSet<>();
+    private final Set<Command> commands = new HashSet<>();
 
     public CommandManager() {
         this.add(new TimeClientCommand());

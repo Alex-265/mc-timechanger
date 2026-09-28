@@ -8,7 +8,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 public class ModMenuImpl implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return (screen -> new ConfigScreen(screen));
+        return ConfigScreen::new;
     }
 }
 //?}
